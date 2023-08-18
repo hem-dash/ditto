@@ -245,6 +245,9 @@ def tune_threshold(config, model, hp):
     with open(validset) as fin:
         for line in fin:
             labels.append(int(line.split('\t')[-1]))
+    
+    classification_report = sklearn.metrics.classification_report(labels, predicts)
+    print(classification_report)
 
     real_f1 = sklearn.metrics.f1_score(labels, predicts)
     print("load_f1 =", f1)
